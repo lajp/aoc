@@ -8,10 +8,13 @@ int main() {
     total = maxval = 0;
     sum = minval = INT_MAX;
     int values[1000];
-    char* line = NULL;
-    size_t s = 128;
-    getline(&line, &s, stdin);
+    char* line = malloc(128*sizeof(char));
     const char* in;
+    int ll = 0;
+    for(char in = getchar_unlocked(); in != EOF; in = getchar_unlocked()) {
+        line[ll++] = in;
+    }
+    line[ll] = '\0';
     for(in = strtok(line, ","); in && *in; ++total) {
         int num = strtol(in, NULL, 10);
         values[total] = num;
@@ -22,7 +25,6 @@ int main() {
         }
         in = strtok(NULL, ",");
     }
-    free(line);
     for(int i = minval; i < maxval; ++i) {
         int fsum = 0;
         for(int j = 0; j < total; ++j) {
