@@ -35,7 +35,7 @@ int find_paths(cave* start, cave* end, cave** visited, int vc) {
         return 1;
     }
     int ans = 0;
-    cave** new_visited = malloc((vc+1)*sizeof(cave*));
+    cave** new_visited = malloc((vc+start->small)*sizeof(cave*));
     int nvc = 0;
     if(visited && vc > 0) {
         for(int i = 0; i < vc; ++i) {
@@ -43,14 +43,14 @@ int find_paths(cave* start, cave* end, cave** visited, int vc) {
         }
     }
     if(start->small) {
-        new_visited[nvc] = start;
-        nvc++;
+        new_visited[nvc++] = start;
     }
     for(int i = 0; i < start->connc; ++i) {
         if(!cave_visited(start->conn[i], new_visited, nvc)) {
             ans += find_paths(start->conn[i], end, new_visited, nvc);
         }
     }
+    free(new_visited);
     return ans;
 }
 
