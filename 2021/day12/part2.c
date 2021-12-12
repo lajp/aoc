@@ -61,44 +61,38 @@ int find_paths(cave* start, cave* end, cave** visited, int vc, bool once) {
 
 int main() {
     int ans = 0;
-    char* line = NULL;
-    size_t size = 128;
     cave* start = NULL;
     cave* end = NULL;
     cave caves[100];
     int cavec = 0;
-    const char* in;
-    while(getline(&line, &size, stdin) != EOF) {
-        in = strtok(line, "-");
-        cave* tmp = cave_with_name(caves, cavec, (char*)in);
+    char in1[10], in2[10];
+    while(scanf("%[^-]-%s\n", in1, in2) != EOF) {
+        cave* tmp = cave_with_name(caves, cavec, (char*)in1);
         if(!tmp) {
             tmp = &caves[cavec++];
-            tmp->name = malloc((strlen(in)+1)*sizeof(char));
-            strcpy(tmp->name, in);
-            tmp->small = islower(in[0]);
+            tmp->name = malloc((strlen(in1)+1)*sizeof(char));
+            strcpy(tmp->name, in1);
+            tmp->small = islower(in1[0]);
             tmp->connc = 0;
             tmp->conn = malloc(100*sizeof(struct cave*));
         }
-        if(strcmp(in, "start") == 0) {
+        if(strcmp(in1, "start") == 0) {
             start = tmp;
         }
-        in = strtok(NULL, "\n");
-        cave* con = cave_with_name(caves, cavec, (char*)in);
+        cave* con = cave_with_name(caves, cavec, (char*)in2);
         if(!con) {
             con = &caves[cavec++];
-            con->name = malloc((strlen(in)+1)*sizeof(char));
-            strcpy(con->name, in);
-            con->small = islower(in[0]);
+            con->name = malloc((strlen(in2)+1)*sizeof(char));
+            strcpy(con->name, in2);
+            con->small = islower(in2[0]);
             con->connc= 0;
             con->conn = malloc(100*sizeof(struct cave*));
-            if(strcmp(in, "end") == 0) {
+            if(strcmp(in2, "end") == 0) {
                 end = con;
             }
         }
         tmp->conn[tmp->connc++] = con;
         con->conn[con->connc++] = tmp;
-        free(line);
-        line = NULL;
     }
     ans = find_paths(start, end, NULL, 0, false);
     printf("Answer: %d\n", ans);
