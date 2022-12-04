@@ -1,4 +1,4 @@
-program part1;
+program part2;
 uses sysutils;
 var a1, a2, b1, b2, ans: int64;
 var ip: string;

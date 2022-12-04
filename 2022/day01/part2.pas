@@ -1,4 +1,4 @@
-program part1;
+program part2;
 var n, cur, i, code, ans: int64;
 var ip: string;
 var q: array[0..2] of int64;
