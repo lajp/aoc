@@ -9,7 +9,7 @@ var n, sf, st, i, ind: int64;
 var item: char;
 var ip: string;
 
-procedure AddItem(sn: int64; item: char; sl: int64);
+procedure AddItem(sn, sl: int64; item: char);
 var i: int64;
 begin
     for i := sl downto 0 do
@@ -57,8 +57,7 @@ begin
         sscanf(ip, 'move %d from %d to %d', [@n, @sf, @st]);
         for i := 1 to n do
         begin
-            item := removeitem(sf, stacklengths[sf]);
-            additem(st, item, stacklengths[st]);
+            additem(st, stacklengths[st], removeitem(sf, stacklengths[sf]));
             inc(stacklengths[st]);
             dec(stacklengths[sf]);
         end;
