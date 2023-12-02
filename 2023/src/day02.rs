@@ -17,19 +17,13 @@ fn part1(input: String) -> impl Display {
             let num = cap[1].parse::<i32>().unwrap();
             match &cap[2] {
                 "red" => {
-                    if num > redmax {
-                        possible = false;
-                    }
+                    possible = possible && num <= redmax;
                 }
                 "green" => {
-                    if num > greenmax {
-                        possible = false;
-                    }
+                    possible = possible && num <= greenmax;
                 }
                 "blue" => {
-                    if num > bluemax {
-                        possible = false;
-                    }
+                    possible = possible && num <= bluemax;
                 }
                 _ => unreachable!(),
             }
