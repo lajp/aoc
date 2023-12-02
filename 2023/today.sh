@@ -7,4 +7,4 @@ sed -i "s/DAYNUM/$TODAY/g" "$FILENAME"
 cat template.toml | sed "s/DAYNUM/$TODAY/g" >> Cargo.toml
 echo "Enter input:"
 cat > "input/$TODAY"
-cargo watch -x "run -- --bin day$TODAY"
+cargo watch -x "run --bin day$TODAY"
