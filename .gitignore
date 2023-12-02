@@ -6,3 +6,5 @@
 !**/*.py
 !**/src/*.rs
 !**/*.toml
+!**/Cargo.lock
+!**/input/*
