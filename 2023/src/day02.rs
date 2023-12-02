@@ -16,15 +16,9 @@ fn part1(input: String) -> impl Display {
         {
             let num = cap[1].parse::<i32>().unwrap();
             match &cap[2] {
-                "red" => {
-                    possible = possible && num <= redmax;
-                }
-                "green" => {
-                    possible = possible && num <= greenmax;
-                }
-                "blue" => {
-                    possible = possible && num <= bluemax;
-                }
+                "red" => possible = possible && num <= redmax,
+                "green" => possible = possible && num <= greenmax,
+                "blue" => possible = possible && num <= bluemax,
                 _ => unreachable!(),
             }
         }
@@ -49,15 +43,9 @@ fn part2(input: String) -> impl Display {
         {
             let num = cap[1].parse::<i32>().unwrap();
             match &cap[2] {
-                "red" => {
-                    redmax = max(redmax, num);
-                }
-                "green" => {
-                    greenmax = max(greenmax, num);
-                }
-                "blue" => {
-                    bluemax = max(bluemax, num);
-                }
+                "red" => redmax = max(redmax, num),
+                "green" => greenmax = max(greenmax, num),
+                "blue" => bluemax = max(bluemax, num),
                 _ => unreachable!(),
             }
         }
