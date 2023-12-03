@@ -49,7 +49,6 @@ fn part1(input: String) -> impl Display {
                 continue;
             }
             if addcur {
-                println!("{}", curnum);
                 parts += curnum;
                 addcur = false;
             }
@@ -58,7 +57,6 @@ fn part1(input: String) -> impl Display {
         }
 
         if addcur {
-            println!("{}", curnum);
             parts += curnum;
         }
     }
@@ -143,8 +141,7 @@ fn part2(input: String) -> impl Display {
 
     gears
         .iter()
-        .flat_map(|(g, v)| {
-            dbg!(&(g, v));
+        .flat_map(|(_, v)| {
             if v.len() == 2 {
                 Some(v.iter().product::<u64>())
             } else {
