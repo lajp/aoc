@@ -15,21 +15,11 @@ fn part1(input: String) -> impl Display {
         .map(|n| n[0].parse::<u64>().unwrap())
         .collect::<Vec<_>>();
 
-    let mut ans = 1;
-
-    for i in 0..times.len() {
-        let mut ways = 0;
-        for h in 1..times[i] {
-            let dist = (times[i] - h) * h;
-            if dist > records[i] {
-                ways += 1
-            }
-        }
-
-        ans *= ways;
-    }
-
-    ans
+    times
+        .iter()
+        .zip(records.iter())
+        .map(|(t, r)| (1..*t).filter(|h| (*t - h) * h > *r).count())
+        .product::<usize>()
 }
 
 fn part2(input: String) -> impl Display {
@@ -49,16 +39,7 @@ fn part2(input: String) -> impl Display {
         .parse::<u64>()
         .unwrap();
 
-    let mut ans = 0;
-
-    for h in 1..time {
-        let dist = (time - h) * h;
-        if dist > record {
-            ans += 1
-        }
-    }
-
-    ans
+    (1..time).filter(|h| (time - h) * h > record).count()
 }
 
 fn main() {
