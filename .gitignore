@@ -1,10 +1,3 @@
-*
-
-!*/
-!**/*.c
-!**/*.pas
-!**/*.py
-!**/src/*.rs
-!**/*.toml
-!**/Cargo.lock
-!**/input/*
+target
+**/*.o
+2022
