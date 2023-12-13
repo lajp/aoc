@@ -1,11 +1,13 @@
 use std::fmt::Display;
 
 fn part1(input: String) -> impl Display {
-    todo!()
+    todo!();
+    ""
 }
 
 fn part2(input: String) -> impl Display {
-    todo!()
+    todo!();
+    ""
 }
 
 fn main() {
