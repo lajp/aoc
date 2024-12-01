@@ -11,8 +11,8 @@ fn part1(input: &str) -> impl std::fmt::Display {
         })
         .unzip();
 
-    l1.sort();
-    l2.sort();
+    l1.sort_unstable();
+    l2.sort_unstable();
 
     l1.into_iter()
         .zip(l2)
@@ -31,8 +31,10 @@ fn part2(input: &str) -> impl std::fmt::Display {
         })
         .unzip();
 
+    let counts = l2.into_iter().counts();
+
     l1.into_iter()
-        .map(|n| n * l2.iter().filter(|n2| **n2 == n).count() as i64)
+        .map(|n| n * *counts.get(&n).unwrap_or(&0) as i64)
         .sum::<i64>()
 }
 
