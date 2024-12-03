@@ -16,7 +16,14 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        devShells.default = pkgs.mkShell {packages = with pkgs; [rustup gnat];};
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            rustup
+            gnat
+            hyperfine
+            python3
+          ];
+        };
       }
     );
 }
