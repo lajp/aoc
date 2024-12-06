@@ -5,6 +5,7 @@ version = "0.1.0"
 
 [dependencies]
 itertools = "0.13.0"
+rayon = "1.10.0"
 regex = "1.11.1"
 
 
@@ -24,3 +25,6 @@ path = "src/day04.rs"
 [[bin]]
 name = "day05"
 path = "src/day05.rs"
+[[bin]]
+name = "day06"
+path = "src/day06.rs"
