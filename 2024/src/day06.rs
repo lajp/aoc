@@ -83,6 +83,16 @@ fn part2(input: &str) -> impl std::fmt::Display {
         }
     }
 
+    fn dir_to_num(dir: (i8, i8)) -> usize {
+        match dir {
+            (1, 0) => 0,
+            (0, 1) => 1,
+            (-1, 0) => 2,
+            (0, -1) => 3,
+            _ => unreachable!(),
+        }
+    }
+
     visited
         .into_iter()
         .par_bridge()
@@ -90,13 +100,14 @@ fn part2(input: &str) -> impl std::fmt::Display {
         .filter(|obst| {
             let mut pos = start;
             let mut dir = (0, -1);
-            let mut visited = HashSet::new();
+            let mut visited = vec![false; rows * cols * 4];
 
             loop {
-                if visited.contains(&(pos, dir)) {
+                let ind = cols * pos.1 as usize * 4 + pos.0 as usize * 4 + dir_to_num(dir);
+                if visited[ind] {
                     return true;
                 }
-                visited.insert((pos, dir));
+                visited[ind] = true;
 
                 let nx = pos.0 + dir.0 as i64;
                 let ny = pos.1 + dir.1 as i64;
