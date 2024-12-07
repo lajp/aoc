@@ -3,6 +3,11 @@ name = "aoc-2024"
 edition = "2021"
 version = "0.1.0"
 
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
 [dependencies]
 itertools = "0.13.0"
 rayon = "1.10.0"
@@ -28,3 +33,6 @@ path = "src/day05.rs"
 [[bin]]
 name = "day06"
 path = "src/day06.rs"
+[[bin]]
+name = "day07"
+path = "src/day07.rs"
