@@ -58,7 +58,11 @@ fn part2(input: &str) -> impl std::fmt::Display {
 
     for (_, fs, fl) in files.iter_mut().rev() {
         for (s, l) in space.iter_mut() {
-            if s < fs && fl <= l {
+            if s >= fs {
+                break;
+            }
+
+            if fl <= l {
                 *fs = *s;
                 *s += *fl;
                 *l -= *fl;
