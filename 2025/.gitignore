@@ -1,4 +1,4 @@
 target
-**/*.o
-2022
 .direnv
+*.txt
+*.py
