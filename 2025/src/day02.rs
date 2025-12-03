@@ -38,7 +38,7 @@ fn part2(input: &str) -> impl std::fmt::Display {
 
             let (start, end): (usize, usize) = (start.parse().unwrap(), end.parse().unwrap());
 
-            'outer: for id in start..=end {
+            for id in start..=end {
                 let lg = id.ilog10();
                 if lg == 0 {
                     continue;
@@ -59,7 +59,7 @@ fn part2(input: &str) -> impl std::fmt::Display {
 
                     if cand == id {
                         ans += id;
-                        continue 'outer;
+                        break;
                     }
                 }
             }
